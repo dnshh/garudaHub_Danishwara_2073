@@ -13,13 +13,15 @@ return new class extends Migration
     {
         Schema::create('bids', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('project_id')->constrained('projects')->onDelete('cascade')->unique();
-            $table->foreignId('developer_id')->constrained('users')->onDelete('cascade')->unique();
-            $table->bigInteger('harga');
-            $table->integer('durasi');
+            $table->foreignId('project_id')->constrained('projects')->cascadeOnDelete();
+            $table->foreignId('developer_id')->constrained('users')->cascadeOnDelete();
+            $table->unsignedBigInteger('harga');
+            $table->unsignedInteger('durasi');
             $table->text('proposal');
-            $table->tinyInteger('is_winner')->default(0);
+            $table->boolean('is_winner')->default(false);
             $table->timestamps();
+
+            $table->unique(['project_id', 'developer_id']);
         });
     }
 

@@ -10,6 +10,7 @@ class DummyDataSeeder extends Seeder
     public function run(): void
     {
         $now = now();
+
         $users = [
             [1, 'Admin Garuda',    'admin@example.com',  '$2y$12$Whu4zQHp93BcHk.eOQI3kO3gQ0ByvWBQ4cGOLQlljMHGhnEfgi5ue', 'admin'],
             [2, 'Budi Santoso',    'budi@example.com',   '$2y$12$AW89bpkcNUdJpelLaz3CSuFoq24tXbzQFb7JHtT2gwK4HKOjKOIAS', 'klien'],
