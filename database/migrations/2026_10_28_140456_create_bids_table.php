@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('project_id')->constrained('projects')->onDelete('cascade');
             $table->foreignId('developer_id')->constrained('users')->onDelete('cascade');
-            $table->bigInteger('harga')->unsigned();
-            $table->integer('durasi')->unsigned();
+            $table->bigInteger('harga');
+            $table->integer('durasi');
             $table->text('proposal');
-            $table->tinyInteger('is_winner')->unsigned()->default(0);
-            $table->timestamps('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->tinyInteger('is_winner')->default(0);
+            $table->timestamps('created_at');
         });
     }
 

@@ -12,16 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('projects', function (Blueprint $table) {
-            $table->id()->autoIncrement();;
+            $table->id();
             $table->foreignId('klien_id')->constrained('users')->onDelete('cascade');
             $table->string('judul', 100);
             $table->text('deskripsi');
             $table->string('kategori', 50);
-            $table->bigInteger('budget_min')->unsigned()->default(0);
-            $table->bigInteger('budget_max')->unsigned()->default(0);
+            $table->bigInteger('budget_min')->default(0);
+            $table->bigInteger('budget_max')->default(0);
             $table->date('batas_lelang');
             $table->string('status', 20)->default('terbuka');
-            $table->timestamps('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamps('created_at');
         });
     }
     /**
