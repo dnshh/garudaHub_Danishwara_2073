@@ -14,17 +14,16 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id()->autoIncrement();;
             $table->foreignId('klien_id')->constrained('users')->onDelete('cascade');
-            $table->string('judul', 100)->notNull();
-            $table->text('deskripsi')->notNull();
-            $table->string('kategori', 50)->notNull();
-            $table->bigInteger('budget_min')->unsigned()->notNull()->default(0);
-            $table->bigInteger('budget_max')->unsigned()->notNull()->default(0);
-            $table->date('batas_lelang')->notNull();
-            $table->string('status', 20)->notNull()->default('terbuka');
-            $table->timestamps('created_at')->notNull()->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->string('judul', 100);
+            $table->text('deskripsi');
+            $table->string('kategori', 50);
+            $table->bigInteger('budget_min')->unsigned()->default(0);
+            $table->bigInteger('budget_max')->unsigned()->default(0);
+            $table->date('batas_lelang');
+            $table->string('status', 20)->default('terbuka');
+            $table->timestamps('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }
-
     /**
      * Reverse the migrations.
      */

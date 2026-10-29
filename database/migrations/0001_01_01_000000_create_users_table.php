@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string('nama', 100)->notNull();
-            $table->string('email', 100)->notNull();
-            $table->string('password', 100)->notNull();
-            $table->string('role', 20, ['klien', 'admin', 'developer'])->notNull()->default('klien');
-            $table->timestamps()->notNull()->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->string('nama', 100);
+            $table->string('email', 100)->unique();
+            $table->string('password', 100);
+            $table->string('role', 20, ['klien', 'admin', 'developer'])->default('klien');
+            $table->timestamps()->default(DB::raw('CURRENT_TIMESTAMP'));
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
