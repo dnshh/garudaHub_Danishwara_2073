@@ -38,7 +38,7 @@ class DummyDataSeeder extends Seeder
             [8, 3, 'Landing Page Event Kampus', 'Satu halaman informasi acara seminar teknologi dengan formulir pendaftaran sederhana.', 'Web', 1500000, 3000000, '2027-09-01', 'terbuka'],
         ];
         DB::table('projects')->insert(array_map(fn ($r) => [
-            'id' => $r[0], 'client_id' => $r[1], 'judul' => $r[2], 'deskripsi' => $r[3],
+            'id' => $r[0], 'klien_id' => $r[1], 'judul' => $r[2], 'deskripsi' => $r[3],
             'kategori' => $r[4], 'budget_min' => $r[5], 'budget_max' => $r[6],
             'batas_lelang' => $r[7], 'status' => $r[8],
             'created_at' => $now, 'updated_at' => $now,
