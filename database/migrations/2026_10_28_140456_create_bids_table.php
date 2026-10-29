@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('durasi');
             $table->text('proposal');
             $table->tinyInteger('is_winner')->default(0);
-            $table->timestamps('created_at');
+            $table->timestamps();
         });
     }
 

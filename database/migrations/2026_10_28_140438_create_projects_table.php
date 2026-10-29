@@ -21,7 +21,7 @@ return new class extends Migration
             $table->bigInteger('budget_max')->default(0);
             $table->date('batas_lelang');
             $table->string('status', 20)->default('terbuka');
-            $table->timestamps('created_at');
+            $table->timestamps();
         });
     }
     /**
