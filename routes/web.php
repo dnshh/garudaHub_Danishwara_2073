@@ -10,8 +10,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ProjectController::class, 'index'])->name('projects.index');
 
 Route::middleware('guest')->group(function () {
-    Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
-    Route::post('/register', [AuthController::class, 'register'])->name('register.store');
+    Route::post('/register', [AuthController::class, 'register'])
+        ->middleware('throttle:10,1')
+        ->name('register.store');
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
     Route::post('/login', [AuthController::class, 'login'])
         ->middleware('throttle:5,1') // batasi 5 percobaan login per menit
