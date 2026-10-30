@@ -14,7 +14,7 @@
 </div>
 <div class="card"><h1>Admin: Proyek</h1>
     <table><thead><tr><th>ID</th><th>Judul</th><th>Klien</th><th>Status</th><th>Aksi</th></tr></thead><tbody>
-    @foreach($projects as $project)<tr><td>{{ $project->id }}</td><td><a href="{{ route('projects.show', $project) }}">{{ $project->judul }}</a></td><td>{{ $project->client->nama }}</td><td><span class="badge {{ $project->status === 'terbuka' ? 'open' : 'closed' }}">{{ $project->status }}</span></td><td>
+    @foreach($projects as $project)<tr><td>{{ $project->id }}</td><td><a href="{{ route('projects.show', $project) }}">{{ $project->judul }}</a></td><td>{{ $project->klien->nama }}</td><td><span class="badge {{ $project->status === 'terbuka' ? 'open' : 'closed' }}">{{ $project->status }}</span></td><td>
         <form class="inline" method="POST" action="{{ route('admin.projects.destroy', $project) }}" onsubmit="return confirm('Hapus proyek ini?')">@csrf @method('DELETE')<button class="sm danger">Hapus</button></form>
     </td></tr>@endforeach
     </tbody></table>

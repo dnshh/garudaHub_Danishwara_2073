@@ -3,7 +3,7 @@
 @section('content')
 <div class="card">
     <h1>{{ $project->judul }} <span class="badge {{ $project->status === 'terbuka' ? 'open' : 'closed' }}">{{ $project->status }}</span></h1>
-    <p class="muted">Kategori: {{ $project->kategori }} | Klien: {{ $project->client->nama }} | Budget: Rp {{ number_format($project->budget_min, 0, ',', '.') }} - Rp {{ number_format($project->budget_max, 0, ',', '.') }} | Batas lelang: {{ $project->batas_lelang->format('Y-m-d') }}</p>
+    <p class="muted">Kategori: {{ $project->kategori }} | Klien: {{ $project->klien->nama }} | Budget: Rp {{ number_format($project->budget_min, 0, ',', '.') }} - Rp {{ number_format($project->budget_max, 0, ',', '.') }} | Batas lelang: {{ $project->batas_lelang->format('Y-m-d') }}</p>
     <p>{!! nl2br(e($project->deskripsi)) !!}</p>
 </div>
 <div class="card">

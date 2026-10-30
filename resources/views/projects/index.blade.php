@@ -14,7 +14,7 @@
         <h2><a href="{{ route('projects.show', $project) }}">{{ $project->judul }}</a>
             <span class="badge {{ $project->status === 'terbuka' ? 'open' : 'closed' }}">{{ $project->status }}</span>
         </h2>
-        <p class="muted">Kategori: {{ $project->kategori }} | Klien: {{ $project->client->nama }} | Budget: Rp {{ number_format($project->budget_min, 0, ',', '.') }} - Rp {{ number_format($project->budget_max, 0, ',', '.') }} | Batas: {{ $project->batas_lelang->format('Y-m-d') }} | {{ $project->bids_count }} penawaran</p>
+        <p class="muted">Kategori: {{ $project->kategori }} | Klien: {{ $project->klien->nama }} | Budget: Rp {{ number_format($project->budget_min, 0, ',', '.') }} - Rp {{ number_format($project->budget_max, 0, ',', '.') }} | Batas: {{ $project->batas_lelang->format('Y-m-d') }} | {{ $project->bids_count }} penawaran</p>
         <p>{{ \Illuminate\Support\Str::limit($project->deskripsi, 160) }}</p>
     </div>
 @empty
