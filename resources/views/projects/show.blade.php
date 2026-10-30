@@ -15,7 +15,7 @@
         <tr class="{{ $bid->is_winner ? 'winner' : '' }}"><td>{{ $bid->developer->nama }} @if($bid->is_winner)<span class="badge win">Pemenang</span>@endif</td>
             <td>Rp {{ number_format($bid->harga, 0, ',', '.') }}</td><td>{{ $bid->durasi }} hari</td><td>{!! nl2br(e($bid->proposal)) !!}</td><td>
             @if($isOwner && $project->status === 'terbuka')
-                <form method="POST" action="{{ route('projects.bids.pick', [$project, $bid]) }}" onsubmit="return confirm('Pilih penawaran ini sebagai pemenang?')">@csrf<button class="sm">Pilih pemenang</button></form>
+                <form method="POST" action="{{ route('projects.bids.pick', [$project, $bid]) }}" data-confirm="Pilih penawaran ini sebagai pemenang?">@csrf<button class="sm">Pilih pemenang</button></form>
             @endif
         </td></tr>
     @endforeach
