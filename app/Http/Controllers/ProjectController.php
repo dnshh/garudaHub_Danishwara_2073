@@ -34,4 +34,30 @@ class ProjectController extends Controller
 
         return view('projects.show', compact('project', 'user', 'isOpen', 'isOwner'));
     }
+    
+    public function create()
+    {
+        abort_unless(auth()->user()->role === 'klien', 403);
+
+        return view('projects.create');
+    }
+
+    public function store(Request $request)
+    {
+        abort_unless($request->user()->role === 'klien', 403);
+
+        $data = $request->validate([
+        'judul'        => ['required', 'string', 'max:200'],
+        'deskripsi'    => ['required', 'string', 'max:5000'],
+        'kategori'     => ['required', 'string', 'max:50'],
+        'budget_min'   => ['required', 'integer', 'min:0'],
+        'budget_max'   => ['required', 'integer', 'gte:budget_min'],
+        'batas_lelang' => ['required', 'date_format:Y-m-d', 'after_or_equal:today'],
+        ]);
+
+        $request->user()->projects()->create($data);
+
+        return redirect()->route('dashboard')
+        ->with('status', 'Proyek berhasil dipasang.');
+    }
 }
