@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BidController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ProjectController::class, 'index'])->name('projects.index');
@@ -17,10 +18,13 @@ Route::middleware('guest')->group(function () {
 
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
+Route::middleware('auth')->group(function () {
+    Route::post('/projects/{project}/bids', [BidController::class, 'store'])->name('projects.bids.store');
+    Route::post('/projects/{project}/bids/{bid}/pick', [BidController::class, 'pick'])->name('projects.bids.pick');
+});
+
 Route::get('/projects/create', fn () => 'Segera hadir')->middleware('auth')->name('projects.create');
 Route::get('/dashboard', fn () => 'Segera hadir')->middleware('auth')->name('dashboard');
 Route::get('/admin', fn () => 'Segera hadir')->middleware('auth')->name('admin.index');
-Route::post('/projects/{project}/bids', fn () => abort(501))->middleware('auth')->name('projects.bids.store');
-Route::post('/projects/{project}/bids/{bid}/pick', fn () => abort(501))->middleware('auth')->name('projects.bids.pick');
 
 Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('projects.show');
