@@ -24,7 +24,7 @@ class User extends Authenticatable
      */
 
     public function projects() { 
-        return $this->hasMany(Project::class, 'client_id'); 
+        return $this->hasMany(Project::class, 'klien_id'); 
     }
     public function bids()     { 
         return $this->hasMany(Bid::class, 'developer_id'); 

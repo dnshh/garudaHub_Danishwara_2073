@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('budget_min')->default(0);
             $table->unsignedBigInteger('budget_max')->default(0);
             $table->date('batas_lelang');
-            $table->enum('status', ['terbuka', 'selesai'])->default('terbuka');
+            $table->enum('status', ['terbuka', 'ditutup'])->default('terbuka');
             $table->timestamps();
         });
     }
